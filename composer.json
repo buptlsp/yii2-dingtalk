@@ -1,0 +1,24 @@
+{
+    "name": "lspbupt/yii2-dingtalk",
+    "description": "dingtalk API for yii2 framework",
+    "keywords": ["yii2", "extension", "dingtalk", "dingding"],
+    "homepage": "https://github.com/buptlsp/yii2-dingtalk",
+    "type": "yii2-extension",
+    "license": "GNU",
+    "authors": [
+        {
+            "name": "李仕鹏",
+            "email": "lspbupt@sina.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "2.0.7",
+        "lspbupt/yii2-curl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "lspbupt\\dingtalk\\": "",
+            "lspbupt\\dingtalk\\widgets" : ""
+        }
+    },
+}
