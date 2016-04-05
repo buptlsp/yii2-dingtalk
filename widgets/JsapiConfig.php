@@ -11,8 +11,7 @@ class JsapiConfig extends Widget
     public $dingtalk = 'dingtalk';
     public $successJs;
     public $errorJs;
-    public $jsApiList;
-    public $url;
+    public $jsApiList = [];
 
     public function init()
     {
@@ -26,7 +25,10 @@ class JsapiConfig extends Widget
         }
         if (!$this->dingtalk instanceof Dingtalk) {
             throw new InvalidConfigException("钉钉配置错误");
-        } 
+        }
+        if (empty($this->errorJs)) {
+            $this->errorJs = "function(error){alert(error.message);}"; 
+        }
     }
 
     public function getUrl()
@@ -53,7 +55,7 @@ class JsapiConfig extends Widget
             'agentId' => $this->dingtalk->agentid,
             'url' => $this->getUrl(),
         ];
-        $sign = Dingtalk::JsSign($arr);
+        $sign = $this->dingtalk->JsSign($arr);
         $js ="dd.config({
              agentId: '".$arr['agentId']."', // 必填，微应用ID
              corpId: '".$arr['corpid']."',//必填，企业ID
