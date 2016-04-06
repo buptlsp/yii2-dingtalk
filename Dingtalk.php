@@ -91,7 +91,6 @@ class Dingtalk extends \lspbupt\curl\CurlHttp
             '&noncestr=' . $arr['noncestr'] .
             '&timestamp=' . $arr['timestamp'] .
             '&url=' . $arr['url'];
-            echo '<pre>'.htmlspecialchars($plain).'</pre>';
         return sha1($plain);
     }
 }
