@@ -17,8 +17,8 @@
     },
     "autoload": {
         "psr-4": {
-            "lspbupt\\dingtalk\\": "",
-            "lspbupt\\dingtalk\\" : "widgets/"
-        }
+            "lspbupt\\dingtalk\\": ""
+        },
+        "classmap" : ["widgets/"]
     }
 }
