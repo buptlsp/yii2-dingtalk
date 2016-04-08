@@ -22,8 +22,13 @@ class Dingtalk extends \lspbupt\curl\CurlHttp
         $this->beforeRequest = function($params, $curlhttp) {
             $action = $curlhttp->getAction();
             if($action != "/gettoken") {
-                $token = $this->getTokenFromCache();
-                $params['access_token'] = $token;
+                $ch = clone $curlhttp;
+                $token = $ch->getTokenFromCache();
+                if(strpos($action, "?") != 0) {
+                    $curlhttp->setAction($action."&access_token=".$token);
+                } else {
+                    $curlhttp->setAction($action."?access_token=".$token);
+                }
             }
             return $params; 
         };
