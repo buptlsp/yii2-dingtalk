@@ -98,4 +98,42 @@ class Dingtalk extends \lspbupt\curl\CurlHttp
             '&url=' . $arr['url'];
         return sha1($plain);
     }
+
+    //获取部门列表
+    public function getDepartmentList()
+    {
+        return $this->setGet()->httpExec("/department/list", []);
+    }
+
+    //获取部门详情
+    public function getDepartmentDetail($departmentid)
+    {
+        return $this->setGet()->httpExec("/department/get", ['id' => $departmentid]);
+    }
+
+    public function sendTextMsg($userid, $party, $msg)
+    {
+        $users = "";
+        if(!empty($userid)) {
+            if(is_array($userid)) {
+                $users = implode("|", $userid);
+            }else {
+                $users = $userid;
+            }
+        }
+        $partys = "";
+        if(!empty($party)) {
+            if(is_array($party)) {
+                $partys = implode("|", $party);
+            }
+        }
+        $arr = [
+            'touser' => $users,
+            'toparty' => $partys,
+            'agentid' => $this->agentid,
+            'msgtype' => 'text',
+            'text' => ['content' => $msg],
+        ];
+        return $this->setPostJson()->httpExec("/message/send", $arr); 
+    }
 }
