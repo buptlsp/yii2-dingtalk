@@ -63,7 +63,7 @@ $data = Yii::$app->dingtalk->sendTextMsg(1, "", "测试一下企业消息");
 //通过GET方法获取dingding的企业部门列表
 $data = Yii::$app->dingtalk->setGet()->httpExec("/department/list", []);
 //通过POST JOSN来发送钉钉消息
-$data = Yii::$app->dingtalk->setPostJson->httpExec("/message/send", [
+$data = Yii::$app->dingtalk->setPostJson()->httpExec("/message/send", [
     'touser' => $user,
     'toparty' => $toparty,
     'agentid' => Yii::$app->dingtalk->agentid,
