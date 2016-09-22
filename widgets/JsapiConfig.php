@@ -34,7 +34,7 @@ class JsapiConfig extends Widget
     public function getUrl()
     {
         $request = \Yii::$app->request;
-        $url = $request->hostInfo.$request->getUrl();
+        $url = $request->hostInfo.urldecode($request->getUrl());
         return $url;  
     }
 
