@@ -33,16 +33,8 @@ class JsapiConfig extends Widget
 
     public function getUrl()
     {
-        $url = "http";
-        if (!empty($_SERVER['HTTPS']) && $_SERVER["HTTPS"] == "on") {
-            $url .= "s";
-        }
-        $url .= "://";
-        if ($_SERVER["SERVER_PORT"] != "80") {
-            $url .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . urldecode($_SERVER["REQUEST_URI"]);
-        } else {
-            $url .= $_SERVER["SERVER_NAME"] . urldecode($_SERVER["REQUEST_URI"]);
-        }
+        $request = \Yii::$app->request;
+        $url = $request->hostInfo.$request->getUrl();
         return $url;  
     }
 

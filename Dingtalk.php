@@ -51,13 +51,13 @@ class Dingtalk extends \lspbupt\curl\CurlHttp
 
     public function getTokenFromCache()
     {
-        $token = $this->cache->get(self::DINGTALK_CACHEKEY, "");
+        $token = $this->cache->get(self::DINGTALK_CACHEKEY.$this->corpid, "");
         if($token) {
             return $token;
         }
         $arr = $this->getToken();
         if($arr['errcode'] == 0) {
-            $this->cache->set(self::DINGTALK_CACHEKEY, $arr['access_token'], 3600);
+            $this->cache->set(self::DINGTALK_CACHEKEY.$this->corpid, $arr['access_token'], 3600);
             return $arr['access_token'];
         }
         return "";
@@ -72,7 +72,7 @@ class Dingtalk extends \lspbupt\curl\CurlHttp
 
     public function getJsapiTicketFromCache()
     {
-        $jsapitoken = $this->cache->get(self::DINGTALK_JSAPI_CACHEKEY, "");
+        $jsapitoken = $this->cache->get(self::DINGTALK_JSAPI_CACHEKEY.$this->corpid, "");
         if($jsapitoken) {
             return $jsapitoken;
         }
@@ -80,7 +80,7 @@ class Dingtalk extends \lspbupt\curl\CurlHttp
         if($arr['errcode'] == 0) {
             $jsapitoken = $arr["ticket"];
             $expire = $arr['expires_in'];  
-            $this->cache->set(self::DINGTALK_JSAPI_CACHEKEY, $jsapitoken, $expire-60);
+            $this->cache->set(self::DINGTALK_JSAPI_CACHEKEY.$this->corpid, $jsapitoken, $expire-60);
             return $jsapitoken;
         }
         return "";
