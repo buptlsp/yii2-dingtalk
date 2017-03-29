@@ -46,7 +46,6 @@ class Prpcrypt extends \yii\base\Component
             //去除补位字符
             $pkc_encoder = new PKCS7Encoder;
             $result = $pkc_encoder->decode($decrypted);
-        Yii::error($result, "result");
             //去除16位随机字符串,网络字节序和AppId
             if (strlen($result) < 16){
                 return "pkds解码错误";
@@ -56,7 +55,6 @@ class Prpcrypt extends \yii\base\Component
             $xml_len = $len_list[1];
             $xml_content = substr($content, 4, $xml_len);
             $from_corpid = substr($content, $xml_len + 4);
-        Yii::error($from_corpid."\t".$corpid."\t".$xml_content."\n".$content, "corp");
         } catch (\Exception $e) {
             return $e->getMessage();
         }
