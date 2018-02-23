@@ -16,13 +16,13 @@ For license information check the [LICENSE](LICENSE.md)-file.
 
 在命令行执行
 ```
-php composer.phar require --prefer-dist "lspbupt/yii2-dingtalk" "1.1.1"
+php composer.phar require "lspbupt/yii2-dingtalk" ">=1.1.1"
 ```
 
 或加入
 
 ```
-"lspbupt/yii2-dingtalk": "1.1.1"
+"lspbupt/yii2-dingtalk": ">=1.1.1"
 ```
 
 到你的`composer.json`文件中的require段。

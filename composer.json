@@ -4,7 +4,7 @@
     "keywords": ["yii2", "extension", "dingtalk", "dingding"],
     "homepage": "https://github.com/buptlsp/yii2-dingtalk",
     "type": "yii2-extension",
-    "license": "GNU",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "李仕鹏",
