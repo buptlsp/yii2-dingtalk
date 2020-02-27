@@ -15,7 +15,7 @@ use Yii;
 class AjaxLoginAction extends BaseLoginAction
 {
     public $dingapp = "dingtalk";
-    public $loginUrl = "/site/login";
+    public $backUrl = "/site/login";
     public $returnCallback;
     public $loginCallback;
     
@@ -53,7 +53,7 @@ class AjaxLoginAction extends BaseLoginAction
     {
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         $code = Yii::$app->request->get('code', '');
-        $backUrl = $this->loginUrl;
+        $backUrl = $this->backUrl;
         if (empty($code)) {
             return call_user_func($this->returnCallback, "code获取不成功", $backUrl);
         }
