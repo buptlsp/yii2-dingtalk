@@ -18,6 +18,5 @@
         "psr-4": {
             "lspbupt\\dingtalk\\": ""
         },
-        "classmap" : ["widgets/"]
     }
 }

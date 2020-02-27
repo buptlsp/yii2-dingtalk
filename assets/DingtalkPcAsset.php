@@ -1,5 +1,5 @@
 <?php
-namespace lspbupt\dingtalk;
+namespace lspbupt\dingtalk\assets;
 
 use yii\web\AssetBundle;
 class DingtalkPcAsset extends AssetBundle
