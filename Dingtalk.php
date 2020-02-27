@@ -72,7 +72,7 @@ class Dingtalk extends \lspbupt\curl\CurlHttp
 
     public function getJsCacheKey()
     {
-        $id  = empty($this->appkey) ? $this->corpid : $this->appkey;
+        $id  = $this->corpid.":".$this->appkey;
         return self::DINGTALK_JSAPI_CACHEKEY.$id;
     }
     
