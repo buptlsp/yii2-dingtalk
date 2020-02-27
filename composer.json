@@ -17,6 +17,6 @@
     "autoload": {
         "psr-4": {
             "lspbupt\\dingtalk\\": ""
-        },
+        }
     }
 }
